@@ -3,43 +3,41 @@ require("L5")
 function setup()
   size(500, 625)
   background('white')
-  -- for the save feature
-  index = 0
 
   -- Set the program title
   windowTitle("project 2")
 
   ---- images
   -- base
-  base = loadImage('grayscale assets/p2-base-grayscale.png')
+  base = loadImage('assets/p2-base.png')
 
   -- glass
-  glass = loadImage('grayscale assets/p2-glass-grayscale.png')
+  glass = loadImage('assets/p2-glass.png')
 
   -- expressions
-  expression1 = loadImage('grayscale assets/expressions/expression-grayscale-1.png')
-  expression2 = loadImage('grayscale assets/expressions/expression-grayscale-2.png')
-  expression3 = loadImage('grayscale assets/expressions/expression-grayscale-3.png')
+  expression1 = loadImage('assets/expressions/expression-1.png')
+  expression2 = loadImage('assets/expressions/expression-2.png')
+  expression3 = loadImage('assets/expressions/expression-3.png')
 
   -- array of expressions
   expressions = {expression1, expression2, expression3}
 
   -- layers
-  layer1 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-1.png')
-  layer2 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-2.png')
-  layer3 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-3.png')
-  layer4 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-4.png')
-  layer5 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-5.png')
-  layer6 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-6.png')
-  layer7 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-7.png')
-  layer8 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-8.png')
-  layer9 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-9.png')
-  layer10 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-10.png')
-  layer11 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-11.png')
-  layer12 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-12.png')
-  layer13 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-13.png')
-  layer14 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-14.png')
-  layer15 = loadImage('grayscale assets/layers/parfaitLayers-grayscale-15.png')
+  layer1 = loadImage('assets/layers/parfaitLayers-1.png')
+  layer2 = loadImage('assets/layers/parfaitLayers-2.png')
+  layer3 = loadImage('assets/layers/parfaitLayers-3.png')
+  layer4 = loadImage('assets/layers/parfaitLayers-4.png')
+  layer5 = loadImage('assets/layers/parfaitLayers-5.png')
+  layer6 = loadImage('assets/layers/parfaitLayers-6.png')
+  layer7 = loadImage('assets/layers/parfaitLayers-7.png')
+  layer8 = loadImage('assets/layers/parfaitLayers-8.png')
+  layer9 = loadImage('assets/layers/parfaitLayers-9.png')
+  layer10 = loadImage('assets/layers/parfaitLayers-10.png')
+  layer11 = loadImage('assets/layers/parfaitLayers-11.png')
+  layer12 = loadImage('assets/layers/parfaitLayers-12.png')
+  layer13 = loadImage('assets/layers/parfaitLayers-13.png')
+  layer14 = loadImage('assets/layers/parfaitLayers-14.png')
+  layer15 = loadImage('assets/layers/parfaitLayers-15.png')
 
   -- arrays with each layer image; sauceLayers is for layers containing sauce/cream type of layering, and otherLayers includes everything else
   -- the reason for seperating them is for the sake of organization and layering (within the code)
@@ -47,15 +45,15 @@ function setup()
   otherLayers = {layer2, layer3, layer4, layer5, layer6, layer7, layer13, layer14, layer15}
 
   -- toppings
-  topping1 = loadImage('grayscale assets/toppings/parfaitToppings-grayscale-1.png')
-  topping2 = loadImage('grayscale assets/toppings/parfaitToppings-grayscale-2.png')
-  topping3 = loadImage('grayscale assets/toppings/parfaitToppings-grayscale-3.png')
-  topping4 = loadImage('grayscale assets/toppings/parfaitToppings-grayscale-4.png')
-  topping5 = loadImage('grayscale assets/toppings/parfaitToppings-grayscale-5.png')
-  topping6 = loadImage('grayscale assets/toppings/parfaitToppings-grayscale-6.png')
-  topping7 = loadImage('grayscale assets/toppings/parfaitToppings-grayscale-7.png')
-  topping8 = loadImage('grayscale assets/toppings/parfaitToppings-grayscale-8.png')
-  topping9 = loadImage('grayscale assets/toppings/parfaitToppings-grayscale-9.png')
+  topping1 = loadImage('assets/toppings/parfaitToppings-1.png')
+  topping2 = loadImage('assets/toppings/parfaitToppings-2.png')
+  topping3 = loadImage('assets/toppings/parfaitToppings-3.png')
+  topping4 = loadImage('assets/toppings/parfaitToppings-4.png')
+  topping5 = loadImage('assets/toppings/parfaitToppings-5.png')
+  topping6 = loadImage('assets/toppings/parfaitToppings-6.png')
+  topping7 = loadImage('assets/toppings/parfaitToppings-7.png')
+  topping8 = loadImage('assets/toppings/parfaitToppings-8.png')
+  topping9 = loadImage('assets/toppings/parfaitToppings-9.png')
 
   -- arrays with each toppng image; frontToppings contain toppings that will always be in front of the rest of the toppings in otherToppings
   frontToppings = {topping7, topping8}
@@ -120,41 +118,32 @@ function cuteTextGenerator()
   end
 end
 
--- mousePressed function
-function mousePressed()
-  -- clear the canvas
-  clear()
-  background(255)
-
-  -- call to the function layerMaker to create the randomized parfait layers
-  layerMaker()
-
-  -- draws the base image
-  image(base, 0, 0, 500, 625)
-
-  -- calls cuteTextGenerator to generate text
-  cuteTextGenerator()
-
-  -- call to the function toppingsMaker to create randomized toppings
-  toppingsMaker()
-
-  -- draws the glass
-  image(glass, 0, 0, 500, 625)
-
-  -- randomly selects an expression from the expressions array
-  image(random(expressions), 0, 0, 500, 625)
-end
-
--- keyPressed function
-function keyPressed()
-  if key == 's' then
-    -- save the canvas
-    save('myRisoPrint-'..index..'.png')
-    index = index + 1
-  end
-end
-
 -- draw function
 function draw()
-  -- nuthin :)
+  -- clear and draw everything again after every 120 frames
+  if frameCount % 120 == 0 then
+    -- clear the canvas
+    clear()
+    background(255)
+
+    -- call to the function layerMaker to create the randomized parfait layers
+    layerMaker()
+
+    -- draws the base image
+    image(base, 0, 0, 500, 625)
+    
+    -- calls cuteTextGenerator to generate text
+    cuteTextGenerator()
+
+    -- call to the function toppingsMaker to create randomized toppings
+    toppingsMaker()
+
+    -- draws the glass
+    image(glass, 0, 0, 500, 625)
+
+    -- randomly selects an expression from the expressions array
+    image(random(expressions), 0, 0, 500, 625)
+  end
+  
+
 end
