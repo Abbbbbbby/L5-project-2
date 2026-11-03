@@ -1,0 +1,4 @@
+﻿My Artist Statement
+
+
+This project is based on the concept of pattern and randomization. As someone who likes to create original characters, and who is largely inspired by food when it comes to creating characters, I thought it would fit well for me to approach the project using the subject of a parfait. Parfaits contain both aspects of pattern, with their different layers and the way toppings are arranged, while also still having a sense of randomization. Moreover, the character featured in the piece is actually a character I had created for fun previously that was directly inspired by parfaits. Using L5, I was able to create a program, or a work of art, that randomizes the appearance of a parfait, using drawn elements as the layers of the parfait and the toppings. The piece to me is simply a fun way to express my interests and creativity, and what it means to create characters.
