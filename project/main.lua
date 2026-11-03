@@ -83,19 +83,20 @@ function layerMaker()
 end
 
 function toppingsMaker()
-  -- variables to randomize the start and range used in the following for loop
-  start = random(1, 6)
-  range = random(start, 7)
+  -- variables to randomize the range used in the following for loop; floor to make sure they are integers and not floats/doubles/decimals
+  local start = floor(random(1, 6))
+  local range = floor(random(start, 7))
 
+  -- randomly draws toppings using a for loop; toppings drawn are randomized
   for i = start, range, 1 do
-    image(random(otherToppings), 0, 0, 500, 625)
+    image(otherToppings[i], 0, 0, 500, 625)
   end
 
   -- randomizes which image from frontToppings is drawn
   image(random(frontToppings), 0, 0, 500, 625)
 
-  -- determines if topping9 will be drawn on the canvas using random()
-  if random(0, 2) == 0 then
+  -- determines if topping9 will be drawn on the canvas using random() with boolean values
+  if random({true, false}) then
     image(topping9, 0, 0, 500, 625)
   end
 end
@@ -112,7 +113,7 @@ function cuteTextGenerator()
       stroke(255)
       textSize(18)
       -- draw text using cuteText
-      text(textPicked, 380, 80 + (i*30))
+      text(textPicked, 390, 80 + (i*30))
     pop()
   end
 end

@@ -62,6 +62,7 @@ function setup()
   -- draw the first instance of each part
   layerMaker()
   image(base, 0, 0, 500, 625)
+  cuteTextGenerator()
   toppingsMaker()
   image(glass, 0, 0, 500, 625)
   image(random(expressions), 0, 0, 500, 625)
@@ -82,46 +83,77 @@ function layerMaker()
 end
 
 function toppingsMaker()
-  -- variables to randomize the start and range used in the following for loop
-  start = random(1, 6)
-  range = random(start, 7)
+  -- variables to randomize the range used in the following for loop; floor to make sure they are integers and not floats/doubles/decimals
+  local start = floor(random(1, 6))
+  local range = floor(random(start, 7))
 
+  -- randomly draws toppings using a for loop; toppings drawn are randomized
   for i = start, range, 1 do
-    image(random(otherToppings), 0, 0, 500, 625)
+    image(otherToppings[i], 0, 0, 500, 625)
   end
 
   -- randomizes which image from frontToppings is drawn
   image(random(frontToppings), 0, 0, 500, 625)
 
-  -- determines if topping9 will be drawn on the canvas using random()
-  if random(0, 2) == 0 then
+  -- determines if topping9 will be drawn on the canvas using random() with boolean values
+  if random({true, false}) then
     image(topping9, 0, 0, 500, 625)
+  end
+end
+
+function cuteTextGenerator()
+  -- array cuteText containing different strings
+  local cuteText = {"pafu pafu nya nya", ":3c", "yay!!", "(^///^)", "(*^ o ^*)", "sweet!!"}
+  -- for loop to display text differently
+  for i = 1, 2, 1 do
+    -- variable for randomized index to use for cuteText
+    local textPicked = random(cuteText)
+    push()
+      textAlign(CENTER)
+      stroke(255)
+      textSize(18)
+      -- draw text using cuteText
+      text(textPicked, 390, 80 + (i*30))
+    pop()
+  end
+end
+
+-- mousePressed function
+function mousePressed()
+  -- clear the canvas
+  clear()
+  background(255)
+
+  -- call to the function layerMaker to create the randomized parfait layers
+  layerMaker()
+
+  -- draws the base image
+  image(base, 0, 0, 500, 625)
+
+  -- calls cuteTextGenerator to generate text
+  cuteTextGenerator()
+
+  -- call to the function toppingsMaker to create randomized toppings
+  toppingsMaker()
+
+  -- draws the glass
+  image(glass, 0, 0, 500, 625)
+
+  -- randomly selects an expression from the expressions array
+  image(random(expressions), 0, 0, 500, 625)
+end
+
+-- keyPressed function
+function keyPressed()
+  if key == 's' then
+    local index = 0
+    -- save the canvas
+    save('myRisoPrint-'..index..'.png')
+    index = index + 1
   end
 end
 
 -- draw function
 function draw()
-  -- clear and draw everything again after every 120 frames
-  if frameCount % 120 == 0 then
-    -- clear the canvas
-    clear()
-    background(255)
-
-    -- call to the function layerMaker to create the randomized parfait layers
-    layerMaker()
-
-    -- draws the base image
-    image(base, 0, 0, 500, 625)
-
-    -- call to the function toppingsMaker to create randomized toppings
-    toppingsMaker()
-
-    -- draws the glass
-    image(glass, 0, 0, 500, 625)
-
-    -- randomly selects an expression from the expressions array
-    image(random(expressions), 0, 0, 500, 625)
-  end
-  
-
+  -- nuthin :)
 end
